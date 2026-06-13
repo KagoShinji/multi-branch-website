@@ -9,11 +9,18 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['DynaPuff', 'cursive'],
+        sans: ['Nunito', 'sans-serif'],
+        script: ['Caveat', 'cursive'],
+      },
       colors: {
         brand: {
-          pink: '#FF69B4',
-          dark: '#111827',
-          light: '#FDFBF7',
+          pink: '#F7A3B2',
+          dark: '#1A1A1A',
+          light: '#F8FAFC',
+          cyan: '#5ECBE6',
+          yellow: '#FDE047',
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

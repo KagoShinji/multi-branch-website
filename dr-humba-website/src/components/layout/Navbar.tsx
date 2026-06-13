@@ -7,6 +7,7 @@ import {
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
+import logo from "@/assets/logo/drhumbalogo.jpg";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,18 +30,20 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-4"
-          : "bg-transparent py-6"
+          ? "bg-white/95 backdrop-blur-md shadow-sm py-4 translate-y-0 opacity-100"
+          : "bg-transparent py-6 -translate-y-4 opacity-0 pointer-events-none"
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2 z-50">
-          <span className={`text-2xl font-bold tracking-tighter ${isScrolled ? "text-brand-dark" : "text-white"}`}>
-            Dr. <span className="text-brand-pink">Humba</span>
-          </span>
+          <img 
+            src={logo} 
+            alt="Dr. Humba Logo" 
+            className="h-10 md:h-12 w-auto mix-blend-multiply drop-shadow-sm"
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -50,9 +53,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-brand-pink ${
-                  isScrolled ? "text-brand-dark/80" : "text-white/90"
-                }`}
+                className="text-sm font-bold text-brand-dark/80 transition-colors hover:text-brand-pink"
               >
                 {link.name}
               </a>
@@ -60,7 +61,7 @@ export default function Navbar() {
           </div>
           <Button
             asChild
-            className="bg-brand-pink hover:bg-brand-pink/90 text-white rounded-full px-6"
+            className="bg-brand-pink hover:bg-brand-pink/90 text-white rounded-full px-6 shadow-md shadow-brand-pink/20"
           >
             <a href="#branches">Order Now</a>
           </Button>
@@ -70,14 +71,14 @@ export default function Navbar() {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={isScrolled ? "text-brand-dark" : "text-white"}>
+              <Button variant="ghost" size="icon" className="text-brand-dark">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="bg-white border-none w-[300px]">
-              <SheetTitle className="text-left mb-6 font-bold text-2xl">
-                Dr. <span className="text-brand-pink">Humba</span>
+              <SheetTitle className="text-left mb-6">
+                <img src={logo} alt="Dr. Humba Logo" className="h-10 w-auto mix-blend-multiply" />
               </SheetTitle>
               <div className="flex flex-col gap-4 mt-8">
                 {navLinks.map((link) => (
